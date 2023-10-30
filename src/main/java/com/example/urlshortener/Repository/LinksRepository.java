@@ -6,6 +6,5 @@ import org.springframework.stereotype.Repository;
 public interface LinksRepository extends CrudRepository<Links, String> {
     Links findByShortLink(String shortLink);
     String deleteByLongLink(String longLink);
-    String deleteLinksByLongLinkEquals(String longLink);
 
 }
