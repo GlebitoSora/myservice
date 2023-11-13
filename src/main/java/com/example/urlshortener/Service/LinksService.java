@@ -16,17 +16,17 @@ public class LinksService {
         links.setShortLink(long_link.substring(0,10));
         linksRepo.save(links);
     }
-    public String getShortLink(String longlink){
+    public String getShortLink(String long_link){
         Links links = new Links();
-        links.setShortLink(longlink.substring(0,10));
+        links.setShortLink(long_link.substring(0,10));
         return links.getShortLink();
     }
-    public Links getLongLink(String shortlink){
-        return linksRepo.findByShortLink(shortlink);
+    public Links getLongLink(String short_link){
+        return linksRepo.findByShortLink(short_link);
     }
     @Transactional
-    public String deleteLink(String longLink){
-       return linksRepo.deleteByLongLink(longLink);
+    public String deleteLink(String long_link){
+       return linksRepo.deleteByLongLink(long_link);
     }
 
 }

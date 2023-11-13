@@ -1,5 +1,4 @@
 package com.example.urlshortener.Controller;
-import com.example.urlshortener.Entity.Links;
 import com.example.urlshortener.Service.LinksService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,7 @@ public class LinksController {
     @Autowired
     private LinksService linksService;
     @PostMapping("/add")
-    public ResponseEntity addLinks(@RequestParam String long_link) {
+    public ResponseEntity<?> addLinks(@RequestParam String long_link) {
         try{
             linksService.addLinks(long_link);
             return ResponseEntity.ok("Ссылка сохранена");
@@ -24,7 +23,7 @@ public class LinksController {
         }
     }
     @GetMapping("/getshort")
-    public ResponseEntity getShortLink(@RequestParam String long_link){
+    public ResponseEntity<?> getShortLink(@RequestParam String long_link){
         try{
             return ResponseEntity.ok(linksService.getShortLink(long_link));
         }
@@ -34,7 +33,7 @@ public class LinksController {
 
     }
     @GetMapping("/getlong")
-    public ResponseEntity getLongLink(@RequestParam String short_link){
+    public ResponseEntity<?> getLongLink(@RequestParam String short_link){
         try{
             return ResponseEntity.ok(linksService.getLongLink(short_link));
         }
@@ -43,7 +42,7 @@ public class LinksController {
         }
     }
     @DeleteMapping("/delete")
-    public ResponseEntity deleteLink(@RequestParam String long_link){
+    public ResponseEntity<?> deleteLink(@RequestParam String long_link){
         log.info(linksService.deleteLink(long_link));
         try{
             if (linksService.deleteLink(long_link).equals("0")){
